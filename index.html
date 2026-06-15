@@ -580,10 +580,7 @@ print("Factorial of 5 is:", find_factorial(5))
         // Configure Marked options
         marked.setOptions({
             gfm: true,
-            breaks: true,
-            headerIds: false,
-            mangle: false,
-            sanitize: false
+            breaks: true
         });
 
         // Initialize Mermaid
@@ -671,7 +668,10 @@ print("Factorial of 5 is:", find_factorial(5))
 
                 const titleSpan = document.createElement('span');
                 titleSpan.className = 'truncate flex-1 pr-2';
-                titleSpan.innerHTML = `<i class="fa-solid fa-file-invoice mr-2 text-[10px] ${isActive ? 'text-purple-400' : 'text-slate-500'}"></i> ${doc.title}`;
+                const titleIcon = document.createElement('i');
+                titleIcon.className = `fa-solid fa-file-invoice mr-2 text-[10px] ${isActive ? 'text-purple-400' : 'text-slate-500'}`;
+                titleSpan.appendChild(titleIcon);
+                titleSpan.appendChild(document.createTextNode(' ' + doc.title));
 
                 // Edit & Delete Control buttons
                 const controlDiv = document.createElement('div');
@@ -806,35 +806,34 @@ print("Factorial of 5 is:", find_factorial(5))
         function compileAdvancedMarkdown(rawText) {
             let processed = rawText;
 
-            // 1. Highlight extraction: ==highlight== -> <mark>
-            processed = processed.replace(/==([\s\S]+?)==/g, '<mark class="bg-yellow-200 text-slate-900 px-1.5 rounded-sm font-semibold">$1</mark>');
+            // Protect fenced code blocks and inline code from custom regex processing
+            const codeParts = processed.split(/(```[\s\S]*?```|`[^`]+`)/);
 
-            // 2. Subscript & Superscript replacements
-            processed = processed.replace(/~([\s\S]+?)~/g, '<sub>$1</sub>');
-            processed = processed.replace(/\^([\s\S]+?)\^/g, '<sup>$1</sup>');
+            processed = codeParts.map((part, i) => {
+                if (i % 2 === 1) return part;
+                part = part.replace(/==([\s\S]+?)==/g, '<mark class="bg-yellow-200 text-slate-900 px-1.5 rounded-sm font-semibold">$1</mark>');
+                part = part.replace(/~([\s\S]+?)~/g, '<sub>$1</sub>');
+                part = part.replace(/\^([\s\S]+?)\^/g, '<sup>$1</sup>');
+                return part;
+            }).join('');
 
-            // 3. LaTeX Math extraction
             const mathBlocks = [];
             const inlineMath = [];
 
-            // Block Math: $$ ... $$
             processed = processed.replace(/\$\$\s*([\s\S]*?)\s*\$\$/g, (match, formula) => {
                 const placeholder = `%%BLOCK_MATH_PLACEHOLDER_${mathBlocks.length}%%`;
                 mathBlocks.push(formula);
                 return placeholder;
             });
 
-            // Inline Math: $ ... $
             processed = processed.replace(/\$(.+?)\$/g, (match, formula) => {
                 const placeholder = `%%INLINE_MATH_PLACEHOLDER_${inlineMath.length}%%`;
                 inlineMath.push(formula);
                 return placeholder;
             });
 
-            // 4. Compile standard markdown
             let compiledHtml = marked.parse(processed);
 
-            // 5. Inject KaTeX back
             mathBlocks.forEach((formula, idx) => {
                 try {
                     const mathHtml = katex.renderToString(formula, { displayMode: true, throwOnError: false });
@@ -928,7 +927,6 @@ print("Factorial of 5 is:", find_factorial(5))
                 } catch (error) {
                     console.error("Mermaid parsing failed: ", error);
                     diagramContainer.innerHTML = `<div class="p-3 text-xs text-rose-600 font-mono bg-rose-50 rounded-lg">Mermaid Syntax Error:<br>${error.message}</div>`;
-                    mermaid.mermaidAPI.parseError = function(err, hash) {};
                 }
             }
         }
@@ -1218,14 +1216,16 @@ print("Factorial of 5 is:", find_factorial(5))
             });
         }
 
-        // Cancel dialog trigger
         document.getElementById('modal-cancel-btn').addEventListener('click', () => {
             if (modalResolve) modalResolve(false);
         });
 
-        // Confirm dialog trigger
         document.getElementById('modal-confirm-btn').addEventListener('click', () => {
             if (modalResolve) modalResolve(true);
+        });
+
+        document.getElementById('modal-text-input').addEventListener('keydown', (e) => {
+            if (e.key === 'Enter' && modalResolve) modalResolve(true);
         });
 
         // Trigger file input dialog
