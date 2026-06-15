@@ -679,20 +679,60 @@ print("Factorial of 5 is:", find_factorial(5))
             return documents.find(d => d.id === id) || documents[0];
         }
 
+        let draggedDocId = null;
+
         function renderExplorerList() {
             const docListContainer = document.getElementById('document-list');
             docListContainer.innerHTML = '';
 
-            documents.sort((a, b) => b.updatedAt - a.updatedAt).forEach(doc => {
+            documents.forEach(doc => {
                 const isActive = doc.id === currentDocId;
                 
                 const itemDiv = document.createElement('div');
                 itemDiv.className = `group flex items-center justify-between px-3 py-2.5 rounded-xl text-xs font-medium transition-all ${
                     isActive ? 'bg-amber/15 text-amber border border-amber/30 font-bold' : 'text-ink-3 hover:bg-cream-100 hover:text-ink-2'
                 } cursor-pointer`;
+                itemDiv.setAttribute('draggable', 'true');
+                itemDiv.dataset.docId = doc.id;
+
+                itemDiv.addEventListener('dragstart', (e) => {
+                    draggedDocId = doc.id;
+                    itemDiv.classList.add('opacity-40');
+                    e.dataTransfer.effectAllowed = 'move';
+                });
+                itemDiv.addEventListener('dragend', () => {
+                    itemDiv.classList.remove('opacity-40');
+                    draggedDocId = null;
+                    docListContainer.querySelectorAll('.border-t-2').forEach(el => el.classList.remove('border-t-2', 'border-amber'));
+                });
+                itemDiv.addEventListener('dragover', (e) => {
+                    e.preventDefault();
+                    if (draggedDocId && draggedDocId !== doc.id) {
+                        itemDiv.classList.add('border-t-2', 'border-amber');
+                    }
+                });
+                itemDiv.addEventListener('dragleave', () => {
+                    itemDiv.classList.remove('border-t-2', 'border-amber');
+                });
+                itemDiv.addEventListener('drop', (e) => {
+                    e.preventDefault();
+                    itemDiv.classList.remove('border-t-2', 'border-amber');
+                    if (!draggedDocId || draggedDocId === doc.id) return;
+                    const fromIdx = documents.findIndex(d => d.id === draggedDocId);
+                    const toIdx = documents.findIndex(d => d.id === doc.id);
+                    const [moved] = documents.splice(fromIdx, 1);
+                    documents.splice(toIdx, 0, moved);
+                    saveDocumentsToStorage();
+                    renderExplorerList();
+                });
                 
-                // Click selection event
                 itemDiv.setAttribute('onclick', `switchDocument('${doc.id}')`);
+
+                const gripIcon = document.createElement('span');
+                gripIcon.className = 'text-ink-3/50 hover:text-ink-3 mr-1 cursor-grab shrink-0 hidden md:inline';
+                gripIcon.innerHTML = '<i class="fa-solid fa-grip-vertical text-[10px]"></i>';
+                gripIcon.setAttribute('onclick', 'event.stopPropagation()');
+                itemDiv.appendChild(gripIcon);
 
                 const titleSpan = document.createElement('span');
                 titleSpan.className = 'truncate flex-1 pr-2';
