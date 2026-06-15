@@ -10,7 +10,7 @@
     <!-- Font Awesome for premium icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <!-- Google Fonts for multilingual academic-grade typography -->
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Lora:ital,wght@0,400;0,600;0,700;1,400&family=Fira+Code:wght@400;500;600&family=Noto+Sans+Devanagari:wght@400;500;700;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Sora:wght@300;400;500;600;700&family=Outfit:wght@300;400;500;600;700&family=Lora:ital,wght@0,400;0,500;0,600;1,400&family=Fira+Code:wght@400;500;600&family=Noto+Sans+Devanagari:wght@400;500;700;900&display=swap" rel="stylesheet">
     
     <!-- Marked.js for fast Markdown compilation -->
     <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
@@ -18,7 +18,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
     
     <!-- Highlight.js for beautiful syntax highlighted code blocks -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github-dark.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/languages/python.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/languages/javascript.min.js"></script>
@@ -36,24 +36,36 @@
             theme: {
                 extend: {
                     fontFamily: {
-                        sans: ['Inter', 'Noto Sans Devanagari', 'sans-serif'],
+                        sans: ['Outfit', 'Sora', 'Noto Sans Devanagari', 'sans-serif'],
                         serif: ['Lora', 'Noto Sans Devanagari', 'serif'],
                         mono: ['Fira Code', 'monospace'],
                     },
                     colors: {
-                        brand: {
-                            50: '#faf5ff',
-                            100: '#f3e8ff',
-                            500: '#a855f7',
-                            600: '#9333ea',
-                            700: '#7e22ce',
-                            800: '#6b21a8',
-                            950: '#0f071a',
+                        cream: {
+                            50: '#faf6f0',
+                            100: '#f4ede2',
+                            200: '#ecdfd0',
+                            300: '#e8d5b7',
+                        },
+                        ink: {
+                            DEFAULT: '#1e1a15',
+                            2: '#4a4038',
+                            3: '#8c7e6e',
+                        },
+                        warm: {
+                            DEFAULT: '#c9a87c',
+                            light: '#e8d5b7',
+                            cocoa: '#8e7c68',
+                            gold: '#c5a880',
+                        },
+                        amber: {
+                            DEFAULT: '#b07d4a',
+                            soft: '#f0e4d0',
                         },
                         panel: {
-                            sidebar: '#0d1527',
-                            editor: '#080d1a',
-                            preview: '#111827',
+                            sidebar: '#ffffff',
+                            editor: '#faf6f0',
+                            preview: '#f6efe5',
                         }
                     }
                 }
@@ -62,16 +74,21 @@
     </script>
 
     <style>
+        *, *::before, *::after {
+            box-sizing: border-box;
+        }
+
         body {
-            font-family: 'Inter', 'Noto Sans Devanagari', sans-serif;
-            background-color: #030712;
+            font-family: 'Outfit', 'Sora', 'Noto Sans Devanagari', sans-serif;
+            background-color: #faf6f0;
+            color: #1e1a15;
         }
 
         /* Paper preview canvas wrapper styles */
         .pdf-page-preview {
             background: #ffffff;
-            color: #1e293b;
-            box-shadow: 0 20px 45px rgba(0, 0, 0, 0.45);
+            color: #1e1a15;
+            box-shadow: 0 4px 20px rgba(160, 120, 70, 0.08);
             transition: all 0.2s ease-in-out;
             max-width: 100%;
         }
@@ -91,31 +108,33 @@
         .markdown-body {
             line-height: 1.68;
             font-size: 14.5px;
-            color: #1e293b;
+            color: #4a4038;
         }
 
         /* Custom fonts toggle for document preview */
-        .font-style-sans { font-family: 'Inter', 'Noto Sans Devanagari', sans-serif; }
+        .font-style-sans { font-family: 'Outfit', 'Sora', 'Noto Sans Devanagari', sans-serif; }
         .font-style-serif { font-family: 'Lora', 'Noto Sans Devanagari', serif; }
 
         .markdown-body h1 {
             font-size: 26px;
-            font-weight: 800;
+            font-weight: 700;
             margin-top: 24px;
             margin-bottom: 14px;
-            border-bottom: 2px solid #f1f5f9;
+            border-bottom: 2px solid #ecdfd0;
             padding-bottom: 6px;
-            color: #111827;
+            color: #1e1a15;
+            font-family: 'Lora', serif;
         }
 
         .markdown-body h2 {
             font-size: 20px;
-            font-weight: 700;
+            font-weight: 600;
             margin-top: 20px;
             margin-bottom: 12px;
-            border-bottom: 1px solid #f1f5f9;
+            border-bottom: 1px solid #ecdfd0;
             padding-bottom: 4px;
-            color: #1f2937;
+            color: #1e1a15;
+            font-family: 'Lora', serif;
         }
 
         .markdown-body h3 {
@@ -123,7 +142,7 @@
             font-weight: 600;
             margin-top: 16px;
             margin-bottom: 8px;
-            color: #374151;
+            color: #4a4038;
         }
 
         .markdown-body p {
@@ -131,19 +150,19 @@
         }
 
         .markdown-body strong {
-            color: #0f172a;
+            color: #1e1a15;
             font-weight: 700;
         }
 
         /* Blockquotes Styling */
         .markdown-body blockquote {
-            border-left: 5px solid #9333ea;
-            background-color: #faf5ff;
+            border-left: 3px solid #b07d4a;
+            background-color: #f0e4d0;
             padding: 12px 18px;
             margin: 18px 0;
-            border-radius: 0 10px 10px 0;
+            border-radius: 0 8px 8px 0;
             font-style: italic;
-            color: #581c87;
+            color: #8c7e6e;
         }
 
         /* Structured Tables Style rules */
@@ -154,55 +173,57 @@
             border-spacing: 0;
             border-radius: 8px;
             overflow: hidden;
-            border: 1px solid #e2e8f0;
+            border: 1px solid #ecdfd0;
         }
 
         .markdown-body th {
-            background-color: #f8fafc;
-            color: #334155;
+            background-color: #f4ede2;
+            color: #4a4038;
             font-weight: 600;
             text-align: left;
             padding: 12px 16px;
             font-size: 13.5px;
-            border-bottom: 2px solid #e2e8f0;
+            border-bottom: 2px solid #ecdfd0;
         }
 
         .markdown-body td {
             padding: 10px 16px;
             font-size: 13.5px;
-            border-bottom: 1px solid #f1f5f9;
+            border-bottom: 1px solid #f4ede2;
         }
 
         .markdown-body tr:nth-child(even) td {
-            background-color: #fdfdfd;
+            background-color: #faf6f0;
         }
 
         /* Syntax Highlight Code Block override */
         .markdown-body pre {
-            background-color: #0f172a !important;
-            color: #e2e8f0;
+            background-color: #2c2a27 !important;
+            color: #f4ede2;
             padding: 16px;
             border-radius: 8px;
             overflow-x: auto;
             margin: 18px 0;
             font-family: 'Fira Code', monospace;
             font-size: 13px;
-            border: 1px solid #1e293b;
+            border: 1px solid #4a4038;
         }
 
         .markdown-body code {
             font-family: 'Fira Code', monospace;
-            background-color: #f1f5f9;
-            color: #db2777;
+            background-color: #f4ede2;
+            color: #b07d4a;
             padding: 2px 6px;
             border-radius: 4px;
             font-size: 13px;
+            border: 1px solid #e8d5b7;
         }
 
         .markdown-body pre code {
             background-color: transparent !important;
             color: inherit;
             padding: 0;
+            border: none;
             font-size: inherit;
         }
 
@@ -228,7 +249,7 @@
         .markdown-body .task-list-item input[type="checkbox"] {
             width: 15px;
             height: 15px;
-            accent-color: #9333ea;
+            accent-color: #b07d4a;
             cursor: default;
         }
 
@@ -257,134 +278,141 @@
             height: 6px;
         }
         ::-webkit-scrollbar-track {
-            background: #111827;
+            background: #f4ede2;
         }
         ::-webkit-scrollbar-thumb {
-            background: #374151;
+            background: #c9a87c;
             border-radius: 4px;
         }
         ::-webkit-scrollbar-thumb:hover {
-            background: #4b5563;
+            background: #b07d4a;
         }
+
+        /* Highlight.js theme override for creamy aesthetic */
+        .hljs { background: #2c2a27 !important; color: #f4ede2 !important; }
+        .hljs-keyword, .hljs-built_in { color: #c5a880 !important; }
+        .hljs-string, .hljs-attr { color: #a8d5a2 !important; }
+        .hljs-number, .hljs-literal { color: #d4a574 !important; }
+        .hljs-comment { color: #8c7e6e !important; font-style: italic; }
     </style>
 </head>
-<body class="flex flex-col h-screen text-slate-100 antialiased overflow-hidden select-none md:select-text">
+<body class="flex flex-col h-screen text-ink antialiased overflow-hidden select-none md:select-text">
 
-    <header class="bg-slate-950 border-b border-slate-800/80 h-16 flex items-center justify-between px-4 md:px-6 z-20 shrink-0">
+    <header class="bg-white border-b border-cream-200 h-16 flex items-center justify-between px-4 md:px-6 z-20 shrink-0">
         <div class="flex items-center space-x-2 md:space-x-3">
             <!-- Sidebar toggle menu icon -->
-            <button onclick="toggleSidebar()" class="text-slate-400 hover:text-white mr-1 p-1.5 bg-slate-900 rounded-lg border border-slate-800 md:bg-transparent md:border-transparent" title="Toggle Document Explorer">
+            <button onclick="toggleSidebar()" class="text-ink-3 hover:text-ink mr-1 p-1.5 bg-cream-50 rounded-lg border border-cream-200 md:bg-transparent md:border-transparent" title="Toggle Document Explorer">
                 <i class="fa-solid fa-bars text-lg"></i>
             </button>
-            <div class="bg-gradient-to-tr from-purple-600 to-indigo-600 p-2 rounded-xl shadow-lg shadow-purple-500/20 hidden xs:block">
+            <div class="bg-gradient-to-tr from-amber to-warm-cocoa p-2 rounded-xl shadow-sm hidden xs:block">
                 <i class="fa-solid fa-graduation-cap text-white text-base"></i>
             </div>
             <div>
-                <h1 class="font-extrabold text-sm md:text-lg bg-gradient-to-r from-purple-400 to-indigo-300 bg-clip-text text-transparent">YT-Notes Studio</h1>
-                <p class="text-[9px] md:text-[10px] text-slate-400 font-mono hidden sm:block">Bilingual Science Engine</p>
+                <h1 class="font-extrabold text-sm md:text-lg bg-gradient-to-r from-amber to-warm-cocoa bg-clip-text text-transparent">YT-Notes Studio</h1>
+                <p class="text-[9px] md:text-[10px] text-ink-3 font-mono hidden sm:block">Bilingual Science Engine</p>
             </div>
         </div>
 
         <!-- Toolbar controls -->
         <div class="flex items-center space-x-2">
             <!-- Responsive Settings Gear Button (Only visible on small screen viewports) -->
-            <button onclick="toggleMobileSettings()" class="md:hidden text-slate-400 hover:text-white p-2 bg-slate-900 border border-slate-800 rounded-lg transition" title="Toggle Quick Settings">
+            <button onclick="toggleMobileSettings()" class="md:hidden text-ink-3 hover:text-ink p-2 bg-cream-50 border border-cream-200 rounded-lg transition" title="Toggle Quick Settings">
                 <i class="fa-solid fa-gear"></i>
             </button>
 
             <!-- Desktop View settings bar (Hidden on mobile devices) -->
             <div class="hidden md:flex items-center space-x-2 lg:space-x-3">
                 <!-- Theme Accents -->
-                <div class="flex items-center space-x-1.5 bg-slate-900 px-3 py-1.5 rounded-lg border border-slate-800">
-                    <button onclick="changeTheme('purple')" class="w-4 h-4 rounded-full bg-purple-500 ring-2 ring-transparent hover:ring-white transition" title="Purple Accent"></button>
-                    <button onclick="changeTheme('blue')" class="w-4 h-4 rounded-full bg-blue-500 ring-2 ring-transparent hover:ring-white transition" title="Blue Accent"></button>
-                    <button onclick="changeTheme('emerald')" class="w-4 h-4 rounded-full bg-emerald-500 ring-2 ring-transparent hover:ring-white transition" title="Emerald Accent"></button>
-                    <button onclick="changeTheme('rose')" class="w-4 h-4 rounded-full bg-rose-500 ring-2 ring-transparent hover:ring-white transition" title="Rose Accent"></button>
+                <div class="flex items-center space-x-1.5 bg-cream-50 px-3 py-1.5 rounded-lg border border-cream-200">
+                    <button onclick="changeTheme('amber')" class="w-4 h-4 rounded-full bg-amber ring-2 ring-transparent hover:ring-warm transition" title="Amber Accent"></button>
+                    <button onclick="changeTheme('cocoa')" class="w-4 h-4 rounded-full bg-warm-cocoa ring-2 ring-transparent hover:ring-warm transition" title="Cocoa Accent"></button>
+                    <button onclick="changeTheme('sage')" class="w-4 h-4 rounded-full bg-emerald-500 ring-2 ring-transparent hover:ring-warm transition" title="Sage Accent"></button>
+                    <button onclick="changeTheme('rose')" class="w-4 h-4 rounded-full bg-rose-400 ring-2 ring-transparent hover:ring-warm transition" title="Rose Accent"></button>
                 </div>
 
                 <!-- Font Selector -->
-                <div class="flex items-center space-x-1 bg-slate-900 px-2 py-1 rounded-lg border border-slate-800">
-                    <span class="text-[11px] text-slate-400"><i class="fa-solid fa-font"></i></span>
-                    <select id="docFont" onchange="syncSettings('font', 'desktop')" class="bg-transparent text-xs text-slate-200 focus:outline-none cursor-pointer p-1">
-                        <option value="sans" class="bg-slate-950 text-slate-200">Modern Sans (Inter)</option>
-                        <option value="serif" class="bg-slate-950 text-slate-200">Academic Serif (Lora)</option>
+                <div class="flex items-center space-x-1 bg-cream-50 px-2 py-1 rounded-lg border border-cream-200">
+                    <span class="text-[11px] text-ink-3"><i class="fa-solid fa-font"></i></span>
+                    <select id="docFont" onchange="syncSettings('font', 'desktop')" class="bg-transparent text-xs text-ink-2 focus:outline-none cursor-pointer p-1">
+                        <option value="sans" class="bg-white text-ink-2">Modern Sans (Outfit)</option>
+                        <option value="serif" class="bg-white text-ink-2">Academic Serif (Lora)</option>
                     </select>
                 </div>
 
                 <!-- Page settings -->
-                <div class="flex items-center space-x-1 bg-slate-900 px-2 py-1 rounded-lg border border-slate-800">
-                    <span class="text-[11px] text-slate-400"><i class="fa-solid fa-file-invoice"></i></span>
-                    <select id="pageSize" onchange="syncSettings('size', 'desktop')" class="bg-transparent text-xs text-slate-200 focus:outline-none cursor-pointer p-1">
-                        <option value="a4" class="bg-slate-950 text-slate-200">A4 Page</option>
-                        <option value="letter" class="bg-slate-950 text-slate-200">Letter Page</option>
+                <div class="flex items-center space-x-1 bg-cream-50 px-2 py-1 rounded-lg border border-cream-200">
+                    <span class="text-[11px] text-ink-3"><i class="fa-solid fa-file-invoice"></i></span>
+                    <select id="pageSize" onchange="syncSettings('size', 'desktop')" class="bg-transparent text-xs text-ink-2 focus:outline-none cursor-pointer p-1">
+                        <option value="a4" class="bg-white text-ink-2">A4 Page</option>
+                        <option value="letter" class="bg-white text-ink-2">Letter Page</option>
                     </select>
-                    <div class="h-4 w-px bg-slate-800"></div>
-                    <select id="marginSize" onchange="syncSettings('margin', 'desktop')" class="bg-transparent text-xs text-slate-200 focus:outline-none cursor-pointer p-1">
-                        <option value="5" class="bg-slate-950 text-slate-200">Very Narrow (5mm)</option>
-                        <option value="10" class="bg-slate-950 text-slate-200" selected>Narrow (10mm)</option>
-                        <option value="15" class="bg-slate-950 text-slate-200">Compact (15mm)</option>
-                        <option value="20" class="bg-slate-950 text-slate-200">Normal (20mm)</option>
+                    <div class="h-4 w-px bg-cream-200"></div>
+                    <select id="marginSize" onchange="syncSettings('margin', 'desktop')" class="bg-transparent text-xs text-ink-2 focus:outline-none cursor-pointer p-1">
+                        <option value="5" class="bg-white text-ink-2">Very Narrow (5mm)</option>
+                        <option value="10" class="bg-white text-ink-2" selected>Narrow (10mm)</option>
+                        <option value="15" class="bg-white text-ink-2">Compact (15mm)</option>
+                        <option value="20" class="bg-white text-ink-2">Normal (20mm)</option>
                     </select>
                 </div>
             </div>
 
             <!-- Export Buttons -->
-            <button onclick="triggerFileDownload()" class="bg-slate-900 hover:bg-slate-800 text-slate-200 p-2 md:px-3 md:py-2 rounded-lg border border-slate-800 hover:border-slate-700 transition flex items-center space-x-1.5" title="Export Markdown File">
+            <button onclick="triggerFileDownload()" class="bg-cream-50 hover:bg-cream-100 text-ink-2 p-2 md:px-3 md:py-2 rounded-lg border border-cream-200 hover:border-warm transition flex items-center space-x-1.5" title="Export Markdown File">
                 <i class="fa-solid fa-download text-sm"></i>
                 <span class="hidden lg:inline text-xs font-semibold">Export MD</span>
             </button>
 
-            <button onclick="generatePDF()" class="bg-gradient-to-r from-purple-600 to-indigo-600 hover:from-purple-500 hover:to-indigo-500 text-white font-bold p-2 md:px-4 md:py-2 rounded-lg shadow-lg shadow-purple-600/20 active:scale-95 transition flex items-center space-x-1.5" title="Download PDF Document">
+            <button onclick="generatePDF()" class="bg-gradient-to-r from-amber to-warm-cocoa hover:from-amber hover:to-warm-cocoa text-white font-bold p-2 md:px-4 md:py-2 rounded-lg shadow-sm active:scale-95 transition flex items-center space-x-1.5" title="Download PDF Document">
                 <i class="fa-solid fa-file-pdf text-sm"></i>
                 <span class="hidden sm:inline text-xs">Download PDF</span>
             </button>
         </div>
     </header>
 
-    <div id="mobile-settings" class="hidden bg-slate-950 border-b border-slate-800 p-4 space-y-4 md:hidden">
+    <div id="mobile-settings" class="hidden bg-white border-b border-cream-200 p-4 space-y-4 md:hidden">
         <div class="grid grid-cols-2 gap-3">
             <!-- Theme Accents selection in Mobile -->
             <div class="flex flex-col space-y-1.5">
-                <span class="text-[10px] text-slate-400 font-bold uppercase tracking-wider"><i class="fa-solid fa-palette mr-1"></i> Accent Accent Color</span>
-                <div class="flex items-center space-x-2 bg-slate-900 px-3 py-1.5 rounded-lg border border-slate-800 justify-around">
-                    <button onclick="changeTheme('purple')" class="w-5 h-5 rounded-full bg-purple-500 ring-2 ring-transparent hover:ring-white transition" title="Purple"></button>
-                    <button onclick="changeTheme('blue')" class="w-5 h-5 rounded-full bg-blue-500 ring-2 ring-transparent hover:ring-white transition" title="Blue"></button>
-                    <button onclick="changeTheme('emerald')" class="w-5 h-5 rounded-full bg-emerald-500 ring-2 ring-transparent hover:ring-white transition" title="Emerald"></button>
-                    <button onclick="changeTheme('rose')" class="w-5 h-5 rounded-full bg-rose-500 ring-2 ring-transparent hover:ring-white transition" title="Rose"></button>
+                <span class="text-[10px] text-ink-3 font-bold uppercase tracking-wider"><i class="fa-solid fa-palette mr-1"></i> Accent Color</span>
+                <div class="flex items-center space-x-2 bg-cream-50 px-3 py-1.5 rounded-lg border border-cream-200 justify-around">
+                    <button onclick="changeTheme('amber')" class="w-5 h-5 rounded-full bg-amber ring-2 ring-transparent hover:ring-warm transition" title="Amber"></button>
+                    <button onclick="changeTheme('cocoa')" class="w-5 h-5 rounded-full bg-warm-cocoa ring-2 ring-transparent hover:ring-warm transition" title="Cocoa"></button>
+                    <button onclick="changeTheme('sage')" class="w-5 h-5 rounded-full bg-emerald-500 ring-2 ring-transparent hover:ring-warm transition" title="Sage"></button>
+                    <button onclick="changeTheme('rose')" class="w-5 h-5 rounded-full bg-rose-400 ring-2 ring-transparent hover:ring-warm transition" title="Rose"></button>
                 </div>
             </div>
 
             <!-- Font Selector in Mobile -->
             <div class="flex flex-col space-y-1.5">
-                <span class="text-[10px] text-slate-400 font-bold uppercase tracking-wider"><i class="fa-solid fa-font mr-1"></i> Typography</span>
-                <div class="bg-slate-900 px-3 py-1.5 rounded-lg border border-slate-800 flex items-center">
-                    <select id="docFontMobile" onchange="syncSettings('font', 'mobile')" class="w-full bg-transparent text-xs text-slate-200 focus:outline-none cursor-pointer">
-                        <option value="sans" class="bg-slate-950 text-slate-200">Modern Sans (Inter)</option>
-                        <option value="serif" class="bg-slate-950 text-slate-200">Academic Serif (Lora)</option>
+                <span class="text-[10px] text-ink-3 font-bold uppercase tracking-wider"><i class="fa-solid fa-font mr-1"></i> Typography</span>
+                <div class="bg-cream-50 px-3 py-1.5 rounded-lg border border-cream-200 flex items-center">
+                    <select id="docFontMobile" onchange="syncSettings('font', 'mobile')" class="w-full bg-transparent text-xs text-ink-2 focus:outline-none cursor-pointer">
+                        <option value="sans" class="bg-white text-ink-2">Modern Sans (Outfit)</option>
+                        <option value="serif" class="bg-white text-ink-2">Academic Serif (Lora)</option>
                     </select>
                 </div>
             </div>
 
             <!-- Page Size in Mobile -->
             <div class="flex flex-col space-y-1.5">
-                <span class="text-[10px] text-slate-400 font-bold uppercase tracking-wider"><i class="fa-solid fa-file-invoice mr-1"></i> Page Size</span>
-                <div class="bg-slate-900 px-3 py-1.5 rounded-lg border border-slate-800 flex items-center">
-                    <select id="pageSizeMobile" onchange="syncSettings('size', 'mobile')" class="w-full bg-transparent text-xs text-slate-200 focus:outline-none cursor-pointer">
-                        <option value="a4" class="bg-slate-950 text-slate-200">A4 Page</option>
-                        <option value="letter" class="bg-slate-950 text-slate-200">Letter Page</option>
+                <span class="text-[10px] text-ink-3 font-bold uppercase tracking-wider"><i class="fa-solid fa-file-invoice mr-1"></i> Page Size</span>
+                <div class="bg-cream-50 px-3 py-1.5 rounded-lg border border-cream-200 flex items-center">
+                    <select id="pageSizeMobile" onchange="syncSettings('size', 'mobile')" class="w-full bg-transparent text-xs text-ink-2 focus:outline-none cursor-pointer">
+                        <option value="a4" class="bg-white text-ink-2">A4 Page</option>
+                        <option value="letter" class="bg-white text-ink-2">Letter Page</option>
                     </select>
                 </div>
             </div>
 
             <!-- Margin Settings in Mobile -->
             <div class="flex flex-col space-y-1.5">
-                <span class="text-[10px] text-slate-400 font-bold uppercase tracking-wider"><i class="fa-solid fa-arrows-left-right mr-1"></i> Margin Sizing</span>
-                <div class="bg-slate-900 px-3 py-1.5 rounded-lg border border-slate-800 flex items-center">
-                    <select id="marginSizeMobile" onchange="syncSettings('margin', 'mobile')" class="w-full bg-transparent text-xs text-slate-200 focus:outline-none cursor-pointer">
-                        <option value="5" class="bg-slate-950 text-slate-200">Very Narrow (5mm)</option>
-                        <option value="10" class="bg-slate-950 text-slate-200" selected>Narrow (10mm)</option>
-                        <option value="15" class="bg-slate-950 text-slate-200">Compact (15mm)</option>
-                        <option value="20" class="bg-slate-950 text-slate-200">Normal (20mm)</option>
+                <span class="text-[10px] text-ink-3 font-bold uppercase tracking-wider"><i class="fa-solid fa-arrows-left-right mr-1"></i> Margin Sizing</span>
+                <div class="bg-cream-50 px-3 py-1.5 rounded-lg border border-cream-200 flex items-center">
+                    <select id="marginSizeMobile" onchange="syncSettings('margin', 'mobile')" class="w-full bg-transparent text-xs text-ink-2 focus:outline-none cursor-pointer">
+                        <option value="5" class="bg-white text-ink-2">Very Narrow (5mm)</option>
+                        <option value="10" class="bg-white text-ink-2" selected>Narrow (10mm)</option>
+                        <option value="15" class="bg-white text-ink-2">Compact (15mm)</option>
+                        <option value="20" class="bg-white text-ink-2">Normal (20mm)</option>
                     </select>
                 </div>
             </div>
@@ -395,14 +423,14 @@
     <main class="flex-1 flex overflow-hidden relative">
 
         <!-- Off-canvas drawer backdrop (Only works on mobile screens) -->
-        <div id="sidebar-backdrop" onclick="toggleSidebar()" class="hidden fixed inset-0 bg-black/70 z-40 md:hidden backdrop-blur-sm"></div>
+        <div id="sidebar-backdrop" onclick="toggleSidebar()" class="hidden fixed inset-0 bg-black/30 z-40 md:hidden backdrop-blur-sm"></div>
 
         <!-- Column 1: Document Explorer (Collapsible Drawer/Side Panel) -->
-        <aside id="sidebar" class="fixed md:relative inset-y-0 left-0 z-50 md:z-10 w-64 transform -translate-x-full md:translate-x-0 bg-panel-sidebar border-r border-slate-800 flex flex-col shrink-0 transition-all duration-300 ease-in-out h-full">
+        <aside id="sidebar" class="fixed md:relative inset-y-0 left-0 z-50 md:z-10 w-64 transform -translate-x-full md:translate-x-0 bg-white border-r border-cream-200 flex flex-col shrink-0 transition-all duration-300 ease-in-out h-full">
             <!-- Sidebar Header -->
-            <div class="p-4 border-b border-slate-800 flex items-center justify-between">
-                <span class="text-xs font-bold text-slate-400 tracking-wider uppercase"><i class="fa-solid fa-folder-open mr-1"></i> Explorer</span>
-                <button onclick="createNewDocument()" class="text-purple-400 hover:text-purple-300 text-xs flex items-center space-x-1 bg-purple-500/10 hover:bg-purple-500/20 px-2 py-1 rounded" title="Create New Note">
+            <div class="p-4 border-b border-cream-200 flex items-center justify-between">
+                <span class="text-xs font-bold text-ink-3 tracking-wider uppercase"><i class="fa-solid fa-folder-open mr-1"></i> Explorer</span>
+                <button onclick="createNewDocument()" class="text-amber hover:text-warm-cocoa text-xs flex items-center space-x-1 bg-amber/10 hover:bg-amber/20 px-2 py-1 rounded" title="Create New Note">
                     <i class="fa-solid fa-plus"></i>
                     <span>New</span>
                 </button>
@@ -414,10 +442,10 @@
             </div>
 
             <!-- Document Operations/Metadata -->
-            <div class="p-4 bg-slate-950 border-t border-slate-800 text-center text-xs text-slate-500 space-y-2">
+            <div class="p-4 bg-cream-50 border-t border-cream-200 text-center text-xs text-ink-3 space-y-2">
                 <p><i class="fa-solid fa-database mr-1"></i> Local Auto-Sync Active</p>
                 <div class="flex items-center justify-around">
-                    <button onclick="triggerFileInput()" class="text-purple-400 hover:text-purple-300 flex items-center space-x-1">
+                    <button onclick="triggerFileInput()" class="text-amber hover:text-warm-cocoa flex items-center space-x-1">
                         <i class="fa-solid fa-file-import"></i>
                         <span>Import MD</span>
                     </button>
@@ -427,59 +455,59 @@
         </aside>
 
         <!-- Column 2: Advanced Markdown Editor Panel -->
-        <section id="editor-section" class="flex-1 flex flex-col h-full bg-panel-editor border-r border-slate-800 transition-all duration-300">
+        <section id="editor-section" class="flex-1 flex flex-col h-full bg-cream-50 border-r border-cream-200 transition-all duration-300">
             <!-- Editor Toolbar Controls -->
-            <div class="bg-slate-900/90 px-3 py-2 border-b border-slate-800/80 flex items-center justify-between shrink-0">
+            <div class="bg-white/90 px-3 py-2 border-b border-cream-200 flex items-center justify-between shrink-0">
                 <div class="flex items-center space-x-2.5 overflow-x-auto py-1 scrollbar-thin">
-                    <button onclick="insertMarkdown('bold')" class="text-slate-400 hover:text-white px-2 py-1 text-xs" title="Bold"><i class="fa-solid fa-bold"></i></button>
-                    <button onclick="insertMarkdown('italic')" class="text-slate-400 hover:text-white px-2 py-1 text-xs" title="Italic"><i class="fa-solid fa-italic"></i></button>
-                    <button onclick="insertMarkdown('header')" class="text-slate-400 hover:text-white px-2 py-1 text-xs" title="Heading"><i class="fa-solid fa-heading"></i></button>
-                    <div class="h-4 w-px bg-slate-800 shrink-0"></div>
-                    <button onclick="insertMarkdown('blockquote')" class="text-slate-400 hover:text-white px-2 py-1 text-xs" title="Blockquote"><i class="fa-solid fa-quote-left"></i></button>
-                    <button onclick="insertMarkdown('table')" class="text-slate-400 hover:text-white px-2 py-1 text-xs" title="Table"><i class="fa-solid fa-table"></i></button>
-                    <button onclick="insertMarkdown('code')" class="text-slate-400 hover:text-white px-2 py-1 text-xs" title="Code block"><i class="fa-solid fa-code"></i></button>
-                    <div class="h-4 w-px bg-slate-800 shrink-0"></div>
-                    <button onclick="insertMarkdown('math')" class="text-purple-400 hover:text-purple-200 px-2 py-1 text-xs font-bold shrink-0" title="LaTeX Equation"><i class="fa-solid fa-calculator"></i> Math</button>
-                    <button onclick="insertMarkdown('mermaid')" class="text-blue-400 hover:text-blue-200 px-2 py-1 text-xs font-bold shrink-0" title="Mermaid Flowchart"><i class="fa-solid fa-diagram-project"></i> Diagram</button>
+                    <button onclick="insertMarkdown('bold')" class="text-ink-3 hover:text-ink px-2 py-1 text-xs" title="Bold"><i class="fa-solid fa-bold"></i></button>
+                    <button onclick="insertMarkdown('italic')" class="text-ink-3 hover:text-ink px-2 py-1 text-xs" title="Italic"><i class="fa-solid fa-italic"></i></button>
+                    <button onclick="insertMarkdown('header')" class="text-ink-3 hover:text-ink px-2 py-1 text-xs" title="Heading"><i class="fa-solid fa-heading"></i></button>
+                    <div class="h-4 w-px bg-cream-200 shrink-0"></div>
+                    <button onclick="insertMarkdown('blockquote')" class="text-ink-3 hover:text-ink px-2 py-1 text-xs" title="Blockquote"><i class="fa-solid fa-quote-left"></i></button>
+                    <button onclick="insertMarkdown('table')" class="text-ink-3 hover:text-ink px-2 py-1 text-xs" title="Table"><i class="fa-solid fa-table"></i></button>
+                    <button onclick="insertMarkdown('code')" class="text-ink-3 hover:text-ink px-2 py-1 text-xs" title="Code block"><i class="fa-solid fa-code"></i></button>
+                    <div class="h-4 w-px bg-cream-200 shrink-0"></div>
+                    <button onclick="insertMarkdown('math')" class="text-amber hover:text-warm-cocoa px-2 py-1 text-xs font-bold shrink-0" title="LaTeX Equation"><i class="fa-solid fa-calculator"></i> Math</button>
+                    <button onclick="insertMarkdown('mermaid')" class="text-emerald-600 hover:text-emerald-700 px-2 py-1 text-xs font-bold shrink-0" title="Mermaid Flowchart"><i class="fa-solid fa-diagram-project"></i> Diagram</button>
                 </div>
             </div>
 
             <!-- Raw Text Editor Area -->
             <div class="flex-1 relative">
-                <textarea id="editor" oninput="handleEditorInput()" class="absolute inset-0 w-full h-full p-4 md:p-6 bg-slate-950/40 text-slate-300 font-mono text-xs md:text-sm leading-relaxed focus:outline-none resize-none overflow-y-auto border-0 focus:ring-0" placeholder="Type or paste your Markdown here..."></textarea>
+                <textarea id="editor" oninput="handleEditorInput()" class="absolute inset-0 w-full h-full p-4 md:p-6 bg-white text-ink-2 font-mono text-xs md:text-sm leading-relaxed focus:outline-none resize-none overflow-y-auto border-0 focus:ring-0" placeholder="Type or paste your Markdown here..."></textarea>
             </div>
 
             <!-- Word & Character Status Indicator -->
-            <div class="bg-slate-900 px-4 py-2 flex justify-between text-[10px] md:text-[11px] text-slate-500 font-mono border-t border-slate-800/80 mb-14 md:mb-0 shrink-0">
+            <div class="bg-white px-4 py-2 flex justify-between text-[10px] md:text-[11px] text-ink-3 font-mono border-t border-cream-200 mb-14 md:mb-0 shrink-0">
                 <span id="docStatus">Status: Synchronized</span>
                 <span id="charCount">0 characters | 0 words</span>
             </div>
         </section>
 
         <!-- Column 3: WYSIWYG Live Preview Panel -->
-        <section id="preview-section" class="w-full md:w-[45%] lg:w-[48%] xl:w-[45%] hidden md:flex flex-col h-full bg-slate-900/60 overflow-hidden">
-            <div class="bg-slate-900/80 px-4 py-2 border-b border-slate-800 flex items-center justify-between shrink-0">
+        <section id="preview-section" class="w-full md:w-[45%] lg:w-[48%] xl:w-[45%] hidden md:flex flex-col h-full bg-cream-100 overflow-hidden">
+            <div class="bg-white/80 px-4 py-2 border-b border-cream-200 flex items-center justify-between shrink-0">
                 <div class="flex items-center space-x-2">
                     <span class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
-                    <span class="text-xs font-semibold uppercase tracking-wider text-slate-400">Live Rendered Document</span>
+                    <span class="text-xs font-semibold uppercase tracking-wider text-ink-3">Live Rendered Document</span>
                 </div>
-                <span class="bg-emerald-500/10 text-emerald-400 px-2 py-0.5 rounded text-[9px] md:text-[10px] font-semibold">Engine Ready</span>
+                <span class="bg-emerald-50 text-emerald-600 px-2 py-0.5 rounded text-[9px] md:text-[10px] font-semibold">Engine Ready</span>
             </div>
 
             <!-- Live Compiled Web Frame Container -->
-            <div class="flex-1 overflow-y-auto p-4 md:p-6 flex justify-center bg-slate-900/40" id="preview-container">
+            <div class="flex-1 overflow-y-auto p-4 md:p-6 flex justify-center bg-cream-50" id="preview-container">
                 <div id="preview-sheet" class="pdf-page-preview rounded-sm relative markdown-body font-style-sans">
                     <!-- Dynamic math diagrams text content will compile here -->
                 </div>
             </div>
         </section>
 
-        <div class="md:hidden fixed bottom-4 right-4 z-40 flex bg-slate-950/90 border border-slate-800 rounded-full p-1.5 shadow-2xl backdrop-blur-md">
-            <button onclick="setMobileView('editor')" id="btn-tab-editor" class="px-4 py-2 rounded-full text-xs font-semibold transition bg-purple-600 text-white flex items-center space-x-1.5">
+        <div class="md:hidden fixed bottom-4 right-4 z-40 flex bg-white/90 border border-cream-200 rounded-full p-1.5 shadow-lg backdrop-blur-md">
+            <button onclick="setMobileView('editor')" id="btn-tab-editor" class="px-4 py-2 rounded-full text-xs font-semibold transition bg-amber text-white flex items-center space-x-1.5">
                 <i class="fa-solid fa-pen"></i>
                 <span>Edit</span>
             </button>
-            <button onclick="setMobileView('preview')" id="btn-tab-preview" class="px-4 py-2 rounded-full text-xs font-semibold transition text-slate-400 flex items-center space-x-1.5">
+            <button onclick="setMobileView('preview')" id="btn-tab-preview" class="px-4 py-2 rounded-full text-xs font-semibold transition text-ink-3 flex items-center space-x-1.5">
                 <i class="fa-solid fa-eye"></i>
                 <span>Preview</span>
             </button>
@@ -487,22 +515,22 @@
     </main>
 
     <!-- Custom Dialog Boxes Backdrop -->
-    <div id="custom-modal" class="hidden fixed inset-0 z-50 flex items-center justify-center bg-slate-950/70 backdrop-blur-sm px-4">
-        <div class="bg-slate-900 border border-slate-800 rounded-2xl max-w-sm md:max-w-md w-full p-5 md:p-6 shadow-2xl transform scale-95 transition-all">
-            <div class="flex items-center space-x-3 text-brand-500 mb-4" id="modal-icon-container">
+    <div id="custom-modal" class="hidden fixed inset-0 z-50 flex items-center justify-center bg-ink/30 backdrop-blur-sm px-4">
+        <div class="bg-white border border-cream-200 rounded-2xl max-w-sm md:max-w-md w-full p-5 md:p-6 shadow-lg transform scale-95 transition-all">
+            <div class="flex items-center space-x-3 text-amber mb-4" id="modal-icon-container">
                 <!-- Icon populates dynamically -->
             </div>
-            <h3 class="text-base md:text-lg font-bold text-slate-100" id="modal-title">Confirm Action</h3>
-            <p class="text-xs md:text-sm text-slate-400 mt-2 mb-6" id="modal-message">Notification description text...</p>
+            <h3 class="text-base md:text-lg font-bold text-ink" id="modal-title">Confirm Action</h3>
+            <p class="text-xs md:text-sm text-ink-3 mt-2 mb-6" id="modal-message">Notification description text...</p>
             
             <!-- Modal text input field -->
             <div id="modal-input-container" class="hidden mb-6">
-                <input type="text" id="modal-text-input" class="w-full px-4 py-2 bg-slate-950 border border-slate-800 rounded-xl text-slate-200 text-sm focus:outline-none focus:border-purple-500" placeholder="Enter value...">
+                <input type="text" id="modal-text-input" class="w-full px-4 py-2 bg-cream-50 border border-cream-200 rounded-xl text-ink text-sm focus:outline-none focus:border-amber" placeholder="Enter value...">
             </div>
 
             <div class="flex items-center justify-end space-x-3">
-                <button id="modal-cancel-btn" class="px-4 py-2 bg-slate-800 hover:bg-slate-700 text-slate-300 rounded-xl text-xs md:text-sm font-semibold transition">Cancel</button>
-                <button id="modal-confirm-btn" class="px-4 py-2 bg-purple-600 hover:bg-purple-500 text-white rounded-xl text-xs md:text-sm font-semibold transition shadow-lg">Confirm</button>
+                <button id="modal-cancel-btn" class="px-4 py-2 bg-cream-100 hover:bg-cream-200 text-ink-2 rounded-xl text-xs md:text-sm font-semibold transition">Cancel</button>
+                <button id="modal-confirm-btn" class="px-4 py-2 bg-amber hover:bg-warm-cocoa text-white rounded-xl text-xs md:text-sm font-semibold transition shadow-sm">Confirm</button>
             </div>
         </div>
     </div>
@@ -586,7 +614,7 @@ print("Factorial of 5 is:", find_factorial(5))
         // Initialize Mermaid
         mermaid.initialize({
             startOnLoad: false,
-            theme: 'default',
+            theme: 'neutral',
             securityLevel: 'loose',
             flowchart: { useMaxWidth: true, htmlLabels: true }
         });
@@ -626,7 +654,7 @@ print("Factorial of 5 is:", find_factorial(5))
             editor.value = getDocumentById(currentDocId).content;
 
             // Apply default visual accent
-            changeTheme('purple');
+            changeTheme('amber');
 
             // Render Preview
             updatePreview();
@@ -660,7 +688,7 @@ print("Factorial of 5 is:", find_factorial(5))
                 
                 const itemDiv = document.createElement('div');
                 itemDiv.className = `group flex items-center justify-between px-3 py-2.5 rounded-xl text-xs font-medium transition-all ${
-                    isActive ? 'bg-purple-600/20 text-purple-300 border border-purple-500/30 font-bold' : 'text-slate-400 hover:bg-slate-800/60 hover:text-slate-200'
+                    isActive ? 'bg-amber/15 text-amber border border-amber/30 font-bold' : 'text-ink-3 hover:bg-cream-100 hover:text-ink-2'
                 } cursor-pointer`;
                 
                 // Click selection event
@@ -669,7 +697,7 @@ print("Factorial of 5 is:", find_factorial(5))
                 const titleSpan = document.createElement('span');
                 titleSpan.className = 'truncate flex-1 pr-2';
                 const titleIcon = document.createElement('i');
-                titleIcon.className = `fa-solid fa-file-invoice mr-2 text-[10px] ${isActive ? 'text-purple-400' : 'text-slate-500'}`;
+                titleIcon.className = `fa-solid fa-file-invoice mr-2 text-[10px] ${isActive ? 'text-amber' : 'text-ink-3'}`;
                 titleSpan.appendChild(titleIcon);
                 titleSpan.appendChild(document.createTextNode(' ' + doc.title));
 
@@ -678,12 +706,12 @@ print("Factorial of 5 is:", find_factorial(5))
                 controlDiv.className = 'flex md:hidden group-hover:flex items-center space-x-2 shrink-0';
 
                 const renameBtn = document.createElement('button');
-                renameBtn.className = 'text-slate-400 hover:text-slate-200 p-1';
+                renameBtn.className = 'text-ink-3 hover:text-ink p-1';
                 renameBtn.innerHTML = '<i class="fa-solid fa-pen"></i>';
                 renameBtn.setAttribute('onclick', `event.stopPropagation(); renameDocumentPrompt('${doc.id}')`);
 
                 const deleteBtn = document.createElement('button');
-                deleteBtn.className = 'text-rose-500 hover:text-rose-400 p-1';
+                deleteBtn.className = 'text-rose-400 hover:text-rose-500 p-1';
                 deleteBtn.innerHTML = '<i class="fa-solid fa-trash-can"></i>';
                 deleteBtn.setAttribute('onclick', `event.stopPropagation(); deleteDocumentPrompt('${doc.id}')`);
 
@@ -768,7 +796,7 @@ print("Factorial of 5 is:", find_factorial(5))
                 "Delete Document", 
                 `क्या आप वाकई "${targetDoc.title}" को हमेशा के लिए हटाना चाहते हैं? इस कार्रवाई को पूर्ववत नहीं किया जा सकता।`,
                 "Delete Permanent",
-                "bg-rose-600 hover:bg-rose-500 shadow-rose-600/20"
+                "bg-rose-400 hover:bg-rose-500"
             );
             if (confirmed) {
                 documents = documents.filter(d => d.id !== id);
@@ -917,7 +945,7 @@ print("Factorial of 5 is:", find_factorial(5))
                 const wrapperId = `mermaid-container-${i}`;
                 const diagramContainer = document.createElement('div');
                 diagramContainer.id = wrapperId;
-                diagramContainer.className = 'mermaid flex justify-center py-3 bg-white rounded-lg border border-slate-100 my-4 overflow-x-auto';
+                diagramContainer.className = 'mermaid flex justify-center py-3 bg-white rounded-lg border border-cream-200 my-4 overflow-x-auto';
                 
                 preElement.replaceWith(diagramContainer);
 
@@ -969,8 +997,8 @@ print("Factorial of 5 is:", find_factorial(5))
                 previewSec.classList.remove('hidden');
                 previewSec.classList.add('flex');
 
-                btnPreview.className = "px-4 py-2 rounded-full text-xs font-semibold transition bg-purple-600 text-white flex items-center space-x-1.5 shadow-lg shadow-purple-600/30";
-                btnEditor.className = "px-4 py-2 rounded-full text-xs font-semibold transition text-slate-400 hover:text-slate-200 flex items-center space-x-1.5";
+                btnPreview.className = "px-4 py-2 rounded-full text-xs font-semibold transition bg-amber text-white flex items-center space-x-1.5 shadow-sm";
+                btnEditor.className = "px-4 py-2 rounded-full text-xs font-semibold transition text-ink-3 hover:text-ink flex items-center space-x-1.5";
                 
                 updatePreview();
             } else {
@@ -979,8 +1007,8 @@ print("Factorial of 5 is:", find_factorial(5))
                 previewSec.classList.add('hidden');
                 previewSec.classList.remove('flex');
 
-                btnEditor.className = "px-4 py-2 rounded-full text-xs font-semibold transition bg-purple-600 text-white flex items-center space-x-1.5 shadow-lg shadow-purple-600/30";
-                btnPreview.className = "px-4 py-2 rounded-full text-xs font-semibold transition text-slate-400 hover:text-slate-200 flex items-center space-x-1.5";
+                btnEditor.className = "px-4 py-2 rounded-full text-xs font-semibold transition bg-amber text-white flex items-center space-x-1.5 shadow-sm";
+                btnPreview.className = "px-4 py-2 rounded-full text-xs font-semibold transition text-ink-3 hover:text-ink flex items-center space-x-1.5";
             }
         }
 
@@ -1059,34 +1087,34 @@ print("Factorial of 5 is:", find_factorial(5))
     </script>
 
     <script>
-        let currentThemeColor = '#a855f7'; // Purple Accent Color Hex
+        let currentThemeColor = '#b07d4a'; // Amber Accent Color Hex
         
         function changeTheme(color) {
-            let accentHex = '#a855f7';
-            let bgLight = '#faf5ff';
-            let textDeep = '#581c87';
+            let accentHex = '#b07d4a';
+            let bgLight = '#f0e4d0';
+            let textDeep = '#8c7e6e';
 
             switch (color) {
-                case 'blue':
-                    accentHex = '#2563eb';
-                    bgLight = '#eff6ff';
-                    textDeep = '#1e3a8a';
+                case 'cocoa':
+                    accentHex = '#8e7c68';
+                    bgLight = '#f2ece4';
+                    textDeep = '#6b5d50';
                     break;
-                case 'emerald':
+                case 'sage':
                     accentHex = '#10b981';
                     bgLight = '#ecfdf5';
                     textDeep = '#064e3b';
                     break;
                 case 'rose':
-                    accentHex = '#f43f5e';
-                    bgLight = '#fff1f2';
-                    textDeep = '#881337';
+                    accentHex = '#f472b6';
+                    bgLight = '#fdf2f8';
+                    textDeep = '#9d174d';
                     break;
-                case 'purple':
+                case 'amber':
                 default:
-                    accentHex = '#a855f7';
-                    bgLight = '#faf5ff';
-                    textDeep = '#581c87';
+                    accentHex = '#b07d4a';
+                    bgLight = '#f0e4d0';
+                    textDeep = '#8c7e6e';
                     break;
             }
 
@@ -1160,17 +1188,17 @@ print("Factorial of 5 is:", find_factorial(5))
     <script>
         let modalResolve = null;
 
-        function showConfirmModal(title, message, confirmText = "Confirm", confirmColor = "bg-purple-600 hover:bg-purple-500 shadow-purple-600/20") {
+        function showConfirmModal(title, message, confirmText = "Confirm", confirmColor = "bg-amber hover:bg-warm-cocoa") {
             document.getElementById('modal-title').textContent = title;
             document.getElementById('modal-message').textContent = message;
             
             const iconContainer = document.getElementById('modal-icon-container');
             iconContainer.innerHTML = '<i class="fa-solid fa-circle-question text-3xl animate-bounce"></i>';
-            iconContainer.className = "flex items-center space-x-3 text-purple-400 mb-4";
+            iconContainer.className = "flex items-center space-x-3 text-amber mb-4";
 
             const confirmBtn = document.getElementById('modal-confirm-btn');
             confirmBtn.textContent = confirmText;
-            confirmBtn.className = `px-4 py-2 ${confirmColor} text-white rounded-xl text-xs md:text-sm font-semibold transition shadow-lg`;
+            confirmBtn.className = `px-4 py-2 ${confirmColor} text-white rounded-xl text-xs md:text-sm font-semibold transition shadow-sm`;
 
             document.getElementById('modal-input-container').classList.add('hidden');
             const modal = document.getElementById('custom-modal');
@@ -1190,11 +1218,11 @@ print("Factorial of 5 is:", find_factorial(5))
             
             const iconContainer = document.getElementById('modal-icon-container');
             iconContainer.innerHTML = '<i class="fa-solid fa-file-pen text-3xl"></i>';
-            iconContainer.className = "flex items-center space-x-3 text-purple-400 mb-4";
+            iconContainer.className = "flex items-center space-x-3 text-amber mb-4";
 
             const confirmBtn = document.getElementById('modal-confirm-btn');
             confirmBtn.textContent = "Proceed";
-            confirmBtn.className = "px-4 py-2 bg-purple-600 hover:bg-purple-500 text-white rounded-xl text-xs md:text-sm font-semibold transition shadow-lg shadow-purple-600/20";
+            confirmBtn.className = "px-4 py-2 bg-amber hover:bg-warm-cocoa text-white rounded-xl text-xs md:text-sm font-semibold transition shadow-sm";
 
             const inputField = document.getElementById('modal-text-input');
             inputField.value = defaultValue;
